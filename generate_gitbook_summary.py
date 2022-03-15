@@ -28,8 +28,7 @@ import re
 
 def format_output(docs_root, path):
   for line in open(path).readlines():
-    match = re.search('^#\s*(.*)', line)
-    if match:
+    if match := re.search('^#\s*(.*)', line):
       header = match.group(1)
       relative_path = os.path.relpath(path, docs_root)
       prefix = (len(relative_path.split(os.path.sep)) - 1) * "  "
